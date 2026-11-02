@@ -69,3 +69,17 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*CC 2026: Including colour coding for blood pressure readings */
+.bp-high {
+    color: red;
+}
+.bp-elevated {
+    color: orange;
+} 
+.bp-normal {
+    color: green;
+} 
+.bp-low {
+    color: blue;
+}

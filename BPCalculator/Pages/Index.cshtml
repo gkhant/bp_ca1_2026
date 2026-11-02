@@ -28,7 +28,17 @@
             @if (ViewData.ModelState.IsValid)
             {
                 <div class="form-group">
-                    @Html.DisplayFor(model => model.BP.Category, new { htmlAttributes = new { @class = "form-control" } })
+                // CC 2026:Display the BP category with a color-coded span based on the category
+                    <span class="@(Model.BP.Category switch
+                    {
+                        BPCalculator.BPCategory.Low => "bp-low",
+                        BPCalculator.BPCategory.Ideal => "bp-normal",
+                        BPCalculator.BPCategory.PreHigh => "bp-elevated",
+                        BPCalculator.BPCategory.High => "bp-high",
+                        _ => string.Empty
+                    })">
+                        @Html.DisplayFor(model => model.BP.Category)
+                    </span>
                 </div>
             }
         </form>

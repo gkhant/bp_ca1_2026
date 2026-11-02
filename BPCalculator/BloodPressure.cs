@@ -33,7 +33,32 @@ namespace BPCalculator
             {
                 // implement as part of project
                 //throw new NotImplementedException("not implemented yet");
-                return new BPCategory();                       // replace this
+                switch (Systolic, Diastolic)
+                {
+
+                //1. High Blood Pressure: Systolic >= 140 or Diastolic >= 90    
+                    case ( >= 140, _):
+                    case (_, >= 90):
+                        return BPCategory.High;
+
+                //2. Pre-High Blood Pressure: Systolic >= 120 or Diastolic >= 80   
+                    case (>= 120, _):
+                    case (_, >= 80):
+                        return BPCategory.PreHigh;
+
+                //3. Low Blood Pressure: Systolic < 90 or Diastolic < 60
+                    case (< 90, < 60):
+                        return BPCategory.Low;
+
+                //4. Ideal Blood Pressure: Systolic < 120 and Diastolic < 80
+                    case (< 120, < 80):
+                        return BPCategory.Ideal;
+
+                //5. Invalid Blood Pressure: Any other combination of Systolic and Diastolic values
+                    default:
+                        throw new InvalidOperationException("Invalid blood pressure values.");
+                }
+                //return new BPCategory();                       // replace this
             }
         }
     }
